@@ -12,7 +12,7 @@
 	$sql = "DELETE FROM albums WHERE albumID = :albumID";
 	//Step 3 - prepare & execute command
 	$cmd = $conn->prepare($sql);
-	$cmd->bindParam(':albumID', $_GET['albumID'], PDO::PARAM_STR);
+	$cmd->bindParam(':albumID', $_GET['albumID'], PDO::PARAM_INT);
 	$cmd->execute();
 	//Step 4 - disconnect from db
 	$conn = null;
