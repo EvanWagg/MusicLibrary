@@ -42,22 +42,22 @@
 			<!-- Title -->
 			<fieldset class="form-group">
 				<label for="title" class="col-sm-1">Title: *</label>
-				<input name="title" id="title" placeholder="Album title" required />
+				<input name="title" id="title" placeholder="Album title" value="<?php echo $title?>" required />
 			</fieldset>
 			<!-- Year -->
 			<fieldset class="form-group">
 				<label for="year" class="col-sm-1">Year:</label>
-				<input name="year" id="year" type="number" min="1900" placeholder="Release year" required />
+				<input name="year" id="year" type="number" min="1900" placeholder="Release year" value="<?php echo $year?>" required />
 			</fieldset>
 			<!-- Artist -->
 			<fieldset class="form-group">
 				<label for="artist" class="col-sm-1">Artist: *</label>
-				<input name="artist" id="artist" placeholder="Artist name" required />
+				<input name="artist" id="artist" placeholder="Artist name" value="<?php echo $artist?>" required />
 			</fieldset>
 			<!-- Genre -->
 			<fieldset class="form-group">
 				<label for="genre" class="col-sm-1">Genre: *</label>
-				<select name="genre" id="genre" required>
+				<select name="genre" id="genre" value="<?php echo $genre?>" required>
 					<?php
 						//Step 1 - connect to db
 						$conn = new PDO('mysql:host=aws.computerstudi.es;dbname=gc200340662', 'gc200340662','uozYSDupBu');
@@ -67,15 +67,17 @@
 						$cmd = $conn->prepare($sql);
 						$cmd->execute();
 						$genres = $cmd->fetchAll();
-						//Step 4 - disconnect from db
-						$conn = null;
-						//Step 5 - loop over the results to build the list with <option> </option>
+						//Step 4 - loop over the results to build the list with <option> </option>
 						$optcheck = '<option selected>Please select a genre</option>';
 						echo $optcheck;
 						foreach ($genres as $genre) {
-							echo '<option>'.$genre['genre'].'</option>';
+							if ($genrePicked == $genre['genre'])
+								echo '<option selected>'.$genre['genre'].'</option>';
+							else
+								echo '<option>'.$genre['genre'].'</option>';
 						}
-
+						//Step 5 - disconnect from db
+						$conn = null;
 					?>
 				</select>
 			</fieldset>
