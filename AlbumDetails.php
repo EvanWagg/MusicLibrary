@@ -31,7 +31,7 @@
 			<!-- Genre -->
 			<fieldset class="form-group">
 				<label for="genre" class="col-sm-1">Genre: *</label>
-				<select name="genre" id="genre">
+				<select name="genre" id="genre" required>
 					<?php
 						//Step 1 - connect to db
 						$conn = new PDO('mysql:host=aws.computerstudi.es;dbname=gc200340662', 'gc200340662','uozYSDupBu');
@@ -44,10 +44,12 @@
 						//Step 4 - disconnect from db
 						$conn = null;
 						//Step 5 - loop over the results to build the list with <option> </option>
-						echo '<option selected>Please select a genre</option>';
+						$optcheck = '<option selected>Please select a genre</option>';
+						echo $optcheck;
 						foreach ($genres as $genre) {
 							echo '<option>'.$genre['genre'].'</option>';
 						}
+
 					?>
 				</select>
 			</fieldset>
