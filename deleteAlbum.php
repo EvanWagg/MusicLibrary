@@ -7,7 +7,7 @@
 <body>
 <?php
 	//Step 1 - connect to the db
-	$conn = new PDO('mysql:host=aws.computerstudi.es;dbname=gc200340662', 'gc200340662','uozYSDupBu');
+	require_once('db.php');
 	//Step 2 - create SQL command
 	$sql = "DELETE FROM albums WHERE albumID = :albumID";
 	//Step 3 - prepare & execute command

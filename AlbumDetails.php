@@ -4,10 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Album Details</title>
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 </head>
 <body>
 	<main class="container">
@@ -24,7 +23,7 @@
 
 			//If the albumID exists, it is an edit situation and we need to load the album from the db
 			if (!empty($albumID)) {
-				$conn = new PDO('mysql:host=aws.computerstudi.es;dbname=gc200340662', 'gc200340662','uozYSDupBu');
+				require_once('db.php');
 				$sql = "SELECT * FROM albums WHERE albumID = :albumID";
 				$cmd = $conn->prepare($sql);
 				$cmd->bindParam(':albumID', $albumID, PDO::PARAM_INT);
@@ -60,6 +59,7 @@
 				<select name="genre" id="genre" value="<?php echo $genre?>" required>
 					<?php
 						//Step 1 - connect to db
+						//$conn = new PDO('mysql:host=aws.computerstudi.es;dbname=root', 'gc200340662','uozYSDupBu');
 						$conn = new PDO('mysql:host=aws.computerstudi.es;dbname=gc200340662', 'gc200340662','uozYSDupBu');
 						//Step 2 - create the SQL statement
 						$sql = "SELECT * FROM genres";
@@ -81,10 +81,18 @@
 					?>
 				</select>
 			</fieldset>
+			<!-- Hidden Field -->
+			<input name="albumID" id="albumID" value="<?php echo $albumID?>" type="hidden" />
 			<button class="btn btn-success col-sm-offset-1">Save</button>
 		</form>
 	</main>
 </body>
+<!-- Latest jQuery -->
+<script src="js/jquery-3.2.1.min.js"></script>
+
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Custom js -->
+<script src="js/app.js"></script>
 </html>
