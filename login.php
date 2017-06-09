@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Login</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-</head>
-<body class="container">
+<?php
+	$pageTitle = 'Login';
+	require_once('header.php');
+?>
+<main class="container">
 	<h1>Login</h1>
 
 	<?php
@@ -34,7 +27,7 @@
 			<button class="btn btn-success">Login</button>
 		</fieldset>
 	</form>
-
+</main>
 </body>
 <!-- Latest jQuery -->
 <script src="js/jquery-3.2.1.min.js"></script>

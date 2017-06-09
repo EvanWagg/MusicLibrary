@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>User Registration</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-</head>
-<body>
+<?php
+	$pageTitle = 'Register';
+	require_once('header.php');
+?>
 	<main class="container">
 		<h1>User Registration</h1>
 		<?php

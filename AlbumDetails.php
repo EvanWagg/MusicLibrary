@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Album Details</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-</head>
-<body>
+<?php
+	$pageTitle = 'Album Details';
+	require_once('header.php');
+?>
 	<main class="container">
 		<h1>Album Details</h1>
 		<?php
@@ -37,25 +30,25 @@
 				$genrePicked = $album['genre'];
 			}
 		?>
-		<form method="post" action="saveAlbum.php">
+		<form method="post" action="saveAlbum.php" enctype="multipart/form-data">
 			<!-- Title -->
 			<fieldset class="form-group">
-				<label for="title" class="col-sm-1">Title: *</label>
+				<label for="title" class="col-sm-2">Title: *</label>
 				<input name="title" id="title" placeholder="Album title" value="<?php echo $title?>" required />
 			</fieldset>
 			<!-- Year -->
 			<fieldset class="form-group">
-				<label for="year" class="col-sm-1">Year:</label>
+				<label for="year" class="col-sm-2">Year:</label>
 				<input name="year" id="year" type="number" min="1900" placeholder="Release year" value="<?php echo $year?>" required />
 			</fieldset>
 			<!-- Artist -->
 			<fieldset class="form-group">
-				<label for="artist" class="col-sm-1">Artist: *</label>
+				<label for="artist" class="col-sm-2">Artist: *</label>
 				<input name="artist" id="artist" placeholder="Artist name" value="<?php echo $artist?>" required />
 			</fieldset>
 			<!-- Genre -->
 			<fieldset class="form-group">
-				<label for="genre" class="col-sm-1">Genre: *</label>
+				<label for="genre" class="col-sm-2">Genre: *</label>
 				<select name="genre" id="genre" value="<?php echo $genre?>" required>
 					<?php
 						//Step 1 - connect to db
@@ -81,9 +74,14 @@
 					?>
 				</select>
 			</fieldset>
+			<!-- Cover Image -->
+			<fieldset class="form-group">
+				<label for="coverFile" class="col-sm-2">Cover Image:</label>
+				<input name="coverFile" id="coverFile" type="file" />
+			</fieldset>
 			<!-- Hidden Field -->
 			<input name="albumID" id="albumID" value="<?php echo $albumID?>" type="hidden" />
-			<button class="btn btn-success col-sm-offset-1">Save</button>
+			<button class="btn btn-success col-sm-offset-2">Save</button>
 		</form>
 	</main>
 </body>

@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Albums</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-
-</head>
-<body>
+<?php
+	$pageTitle = 'Albums';
+	require_once('header.php');
+?>
+<main class="container">
 	<h1>Albums</h1>
 	<?php
-	session_start();
-
 	if (!empty($_SESSION['email']))
 		echo '<a href="AlbumDetails.php" >Add a new Album</a>';
 	?>
@@ -36,7 +27,8 @@
 			<tr><th>Title</th>
 				<th>Year</th>
 				<th>Artist</th>
-				<th>Genre</th>';
+				<th>Genre</th>
+				<th>Cover Image</th>';
 
 		if (!empty($_SESSION['email'])) {
 			echo 	'<th>Edit</th>
@@ -48,14 +40,15 @@
 			echo '<tr>	<td>'.$album['title'].'</td>
 						<td>'.$album['year'].'</td>
 						<td>'.$album['artist'].'</td>
-						<td>'.$album['genre'].'</td>';
+						<td>'.$album['genre'].'</td>
+						<td><img height="50" src='.$album['coverFile'].'></td>';
 			if (!empty($_SESSION['email'])) {
 				echo 	'<td><a href="AlbumDetails.php?albumID='.$album['albumID'].'" class="btn btn-primary">Edit</a></td>
 						<td><a href="deleteAlbum.php?albumID='.$album['albumID'].'" class="btn btn-danger confirmation">Delete</a></td>';
 			}
 			echo '</tr>';
 		}
-		echo '</table>';
+		echo '</table></main>';
 
 		include_once('footer.php');
 	?>
